@@ -26,14 +26,14 @@
               <v-select v-model='language' :items="languages" label="Language" v-on:change="abstruct"></v-select>
               <h2>Snippets Shortcut</h2>
               <ul>
-                <li v-for="snippet in snippetList"><span id='name' v-on:click="goElem(snippet.id)">[{{ snippet.language }}] {{ snippet.title }}</span></li>
+                <li v-for="snippet in reverseSnippetList"><span id='name' v-on:click="goElem(snippet.id)">[{{ snippet.language }}] {{ snippet.title }}</span></li>
               </ul>
             </div>
           </v-flex>
           <v-flex xs7 style='margin:10px'>
             <h2>Search Snippet</h2>
             <v-text-field v-model="searchWord" v-on:keyup="abstruct" label="Input Keyword" style='margin-top:4px'></v-text-field>
-            <v-card style="margin-top:10px" v-for="snippet in snippetList">
+            <v-card style="margin-top:10px" v-for="snippet in reverseSnippetList">
               <a v-bind:id='snippet.id'></a>
               <v-card-title primary-title>
                 <div style="background-color:#FFCDD2">
@@ -167,6 +167,12 @@
             deleteContents: '',
             searchWord: ''
           }
+        },
+        computed: {
+          // 配列の要素順番を逆順にする
+          reverseSnippetList() {
+            return this.snippetList.slice().reverse();
+          },
         },
         mounted () {
           this.listSnippet();
