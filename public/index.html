@@ -12,8 +12,8 @@
     <title>Snippet App</title>
   </head>
   <body>
-    <v-app id="app">
-      <v-toolbar color="red lighten-3" dark>
+    <v-app id="app"><!-- こちらを先にマージ -->
+      <v-toolbar color="red lighten-3" dark> <!-- これはコンフリクト起こさない -->
         <v-toolbar-title>Snippet App</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn flat v-on:click="togglePostModal()">New Snippet</v-btn> 
